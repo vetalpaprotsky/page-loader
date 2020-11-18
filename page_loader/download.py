@@ -3,12 +3,7 @@ import re
 import requests
 
 
-def download(page_url, dir_path=None):
-    if dir_path is None:
-        dir_path = os.getcwd()
-    elif not os.path.isabs(dir_path):
-        dir_path = os.path.join(os.getcwd(), dir_path)
-
+def download(page_url, dir_path):
     response = requests.get(page_url)
     response.raise_for_status()
 
