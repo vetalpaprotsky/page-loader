@@ -6,3 +6,6 @@
 
 ### Hexlet tests and linter status:
 [![Actions Status](https://github.com/vetalpaprotsky/python-project-lvl3/workflows/hexlet-check/badge.svg)](https://github.com/vetalpaprotsky/python-project-lvl3/actions)
+
+# Page Loader | Step 1
+[![asciicast](https://asciinema.org/a/pYeS3WUbPYiyH66cR848TkdzX.svg)](https://asciinema.org/a/pYeS3WUbPYiyH66cR848TkdzX)
