@@ -9,3 +9,6 @@
 
 ### Page Loader | Step 1
 [![asciicast](https://asciinema.org/a/pYeS3WUbPYiyH66cR848TkdzX.svg)](https://asciinema.org/a/pYeS3WUbPYiyH66cR848TkdzX)
+
+### Page Loader | Step 2
+[![asciicast](https://asciinema.org/a/tIdEfaTjeQlOMn1auqlXy8C6c.svg)](https://asciinema.org/a/tIdEfaTjeQlOMn1auqlXy8C6c)
