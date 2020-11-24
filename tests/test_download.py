@@ -7,10 +7,10 @@ def test_download_page_without_resources(requests_mock, tmpdir):
     page_url = 'http://this.is.a.test/page'
     requests_mock.get(page_url, text=page_content)
 
-    downloaded_page_path = tmpdir / 'this-is-a-test-page.html'
-    assert download(page_url, str(tmpdir)) == downloaded_page_path
+    page_path = tmpdir / 'this-is-a-test-page.html'
+    assert download(page_url, str(tmpdir)) == page_path
 
-    with open(downloaded_page_path) as file:
+    with open(page_path) as file:
         page = whitespaces_removed(file.read())
         expected = whitespaces_removed(page_content)
         assert page == expected
@@ -40,10 +40,10 @@ def test_download_page_with_resources(requests_mock, tmpdir):
         content=image_binary,
     )
 
-    downloaded_page_path = tmpdir / 'test-com-page.html'
-    assert download(page_url, str(tmpdir)) == downloaded_page_path
+    page_path = tmpdir / 'test-com-page.html'
+    assert download(page_url, str(tmpdir)) == page_path
 
-    with open(downloaded_page_path) as file:
+    with open(page_path) as file:
         page = whitespaces_removed(file.read())
         expected = whitespaces_removed(
             load_fixture('test_page_after_download.html')

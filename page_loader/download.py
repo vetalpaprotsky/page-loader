@@ -5,7 +5,7 @@ from bs4 import BeautifulSoup
 from urllib.parse import urlparse, urljoin
 
 
-def download(page_url, dir_path):
+def download(page_url, output_dir_path):
     response = requests.get(page_url)
     response.raise_for_status()
     soup = BeautifulSoup(response.text, 'html.parser')
@@ -16,7 +16,7 @@ def download(page_url, dir_path):
             image_tags.append(image_tag)
 
     recources_dir_name = _url_to_name(page_url) + '_files'
-    resources_dir_path = os.path.join(dir_path, recources_dir_name)
+    resources_dir_path = os.path.join(output_dir_path, recources_dir_name)
     if len(image_tags) > 0 and not os.path.isdir(resources_dir_path):
         os.mkdir(resources_dir_path)
 
@@ -27,13 +27,11 @@ def download(page_url, dir_path):
         if image_name:
             image_tag['src'] = os.path.join(recources_dir_name, image_name)
 
-    downloaded_page_path = os.path.join(
-        dir_path, _url_to_name(page_url) + '.html'
-    )
-    with open(downloaded_page_path, 'w') as file:
+    page_path = os.path.join(output_dir_path, _url_to_name(page_url) + '.html')
+    with open(page_path, 'w') as file:
         file.write(soup.prettify())
 
-    return downloaded_page_path
+    return page_path
 
 
 def _url_to_name(url):
