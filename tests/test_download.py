@@ -1,6 +1,6 @@
 import os
 from tests.utils import load_fixture, whitespaces_removed
-from page_loader.download import download
+from page_loader.page import download
 
 
 def test_download_page_without_resources(requests_mock, tmpdir):
