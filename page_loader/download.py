@@ -8,24 +8,26 @@ from urllib.parse import urlparse, urljoin
 def download(page_url, output_dir_path):
     response = requests.get(page_url)
     response.raise_for_status()
+
     soup = BeautifulSoup(response.text, 'html.parser')
+    root_url = _get_root_url(page_url)
+    tags = _get_tags_with_local_resources(soup, root_url)
 
-    image_tags = []
-    for image_tag in soup.find_all('img'):
-        if _is_url_relative(image_tag['src']):
-            image_tags.append(image_tag)
-
-    recources_dir_name = _url_to_name(page_url) + '_files'
-    resources_dir_path = os.path.join(output_dir_path, recources_dir_name)
-    if len(image_tags) > 0 and not os.path.isdir(resources_dir_path):
+    resources_dir_name = _url_to_name(page_url) + '_files'
+    resources_dir_path = os.path.join(output_dir_path, resources_dir_name)
+    if len(tags) > 0 and not os.path.isdir(resources_dir_path):
         os.mkdir(resources_dir_path)
 
-    root_url = _get_root_url(page_url)
-    for image_tag in image_tags:
-        image_url = urljoin(root_url, image_tag['src'])
-        image_name = _download_image(image_url, resources_dir_path)
-        if image_name:
-            image_tag['src'] = os.path.join(recources_dir_name, image_name)
+    for tag in tags:
+        full_resource_url = urljoin(root_url, tag['soup'][tag['attr']])
+        resource_name = _download_resourse(
+            full_resource_url,
+            resources_dir_path
+        )
+        if resource_name:
+            tag['soup'][tag['attr']] = os.path.join(
+                resources_dir_name, resource_name
+            )
 
     page_path = os.path.join(output_dir_path, _url_to_name(page_url) + '.html')
     with open(page_path, 'w') as file:
@@ -45,17 +47,41 @@ def _get_root_url(url):
     return result.scheme + '://' + result.hostname
 
 
-def _download_image(url, dir_path):
+def _download_resourse(url, dir_path):
     response = requests.get(url)
     if response.ok:
-        image_url_without_ext, ext = os.path.splitext(url)
-        image_name = _url_to_name(image_url_without_ext) + ext
-        image_path = os.path.join(dir_path, image_name)
-        with open(image_path, 'wb') as image:
-            image.write(response.content)
-        return image_name
+        resourse_url_without_ext, ext = os.path.splitext(url)
+        if not ext:
+            ext = '.html'
+        resourse_name = _url_to_name(resourse_url_without_ext) + ext
+        resourse_path = os.path.join(dir_path, resourse_name)
+        with open(resourse_path, 'wb') as resourse:
+            resourse.write(response.content)
+        return resourse_name
 
 
-def _is_url_relative(url):
-    parsed_url = urlparse(url)
-    return parsed_url.hostname is None
+def _is_url_local(url, root_url):
+    hostname = urlparse(url).hostname
+    return hostname is None or hostname == urlparse(root_url).hostname
+
+
+def _get_tags_with_local_resources(soup, root_url):
+    tags = []
+    for tag in soup.find_all(['img', 'link', 'script']):
+        if (
+            (tag.name == 'img' or tag.name == 'script')
+            and tag.get('src') is not None
+            and _is_url_local(tag['src'], root_url)
+        ):
+            tags.append({'soup': tag, 'attr': 'src'})
+        elif (
+            tag.name == 'link'
+            and tag.get('href') is not None
+            and _is_url_local(tag['href'], root_url)
+        ):
+            tags.append({'soup': tag, 'attr': 'href'})
+    return tags
+
+
+# TODO: create some file which will contain some abstract functions which
+# interact with the soup tree and its tags.

@@ -19,7 +19,7 @@ def _get_parser():
         '-o', '--output',
         metavar='dir',
         type=str,
-        help='output dir (default is the current directory)',
+        help='output dir (defaults to the current directory)',
         default=os.getcwd(),
     )
     return parser
