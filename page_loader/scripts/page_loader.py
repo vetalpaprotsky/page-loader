@@ -1,4 +1,4 @@
-from page_loader.page import download
+from page_loader.download import download
 from page_loader.args_parser import parse_args
 
 
