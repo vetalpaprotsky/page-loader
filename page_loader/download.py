@@ -3,9 +3,9 @@ from page_loader.resource import get_resource_content
 from page_loader.dom_tree import set_local_resources
 from page_loader.utils import (
     url_to_name,
-    url_to_resource_name,
-    create_dir,
+    url_to_file_name,
     write_to_file,
+    create_dir,
 )
 
 
@@ -30,7 +30,7 @@ def download(page_url, output_dir_path):
 
     page_path = os.path.join(
         output_dir_path,
-        url_to_resource_name(page_url),
+        url_to_file_name(page_url),
     )
     write_to_file(updated_page_html, page_path)
 

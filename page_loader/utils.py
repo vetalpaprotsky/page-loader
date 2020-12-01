@@ -9,10 +9,10 @@ def url_to_name(url):
     return name.strip('-')
 
 
-def url_to_resource_name(url):
+def url_to_file_name(url, default_ext='.html'):
     url_without_ext, ext = os.path.splitext(url)
     if not ext:
-        ext = '.html'
+        ext = default_ext
     return url_to_name(url_without_ext) + ext
 
 

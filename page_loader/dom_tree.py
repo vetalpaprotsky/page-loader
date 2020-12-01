@@ -1,7 +1,7 @@
 import os
 from urllib.parse import urljoin
 from page_loader.utils import (
-    url_to_resource_name,
+    url_to_file_name,
     is_url_local_to_host,
     get_root_url,
 )
@@ -20,7 +20,7 @@ def set_local_resources(html, page_url, resources_dir_path):
             continue
 
         full_resource_url = urljoin(root_url, resource_url)
-        resource_name = url_to_resource_name(full_resource_url)
+        resource_name = url_to_file_name(full_resource_url)
 
         _set_resource_url(tag, os.path.join(resources_dir_name, resource_name))
         resources_info.append({
