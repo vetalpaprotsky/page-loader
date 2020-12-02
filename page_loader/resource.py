@@ -1,9 +1,12 @@
 import requests
+from page_loader.logging import logger
 
 
 def get_resource_content(url, is_binary=True):
-    response = requests.get(url)
-    if response.ok:
+    try:
+        response = requests.get(url)
+        response.raise_for_status()
         return response.content if is_binary else response.text
-    else:
-        pass  # TODO: log error.
+    except requests.exceptions.HTTPError as e:
+        logger.error("Failed to get resource content: " + str(e))
+        raise

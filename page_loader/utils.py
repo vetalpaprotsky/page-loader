@@ -1,6 +1,7 @@
 import os
 import re
 from urllib.parse import urlparse
+from page_loader.logging import logger
 
 
 def url_to_name(url):
@@ -29,17 +30,17 @@ def is_url_local_to_host(url, root_url):
 def write_to_file(content, path):
     try:
         write_mode = 'wb' if isinstance(content, bytes) else 'w'
-        file = open(path, write_mode)
-    except OSError:
-        pass  # TODO log error.
-
-    with file:
-        file.write(content)
+        with open(path, write_mode) as file:
+            file.write(content)
+    except OSError as e:
+        logger.error("Failed to write to a file: " + str(e))
+        raise
 
 
 def create_dir(path):
     try:
         if not os.path.exists(path):
             os.mkdir(path)
-    except OSError:
-        pass  # TODO: log error.
+    except OSError as e:
+        logger.error("Failed to create a directory: " + str(e))
+        raise
