@@ -11,7 +11,7 @@ config = {
     'handlers': {
         'stderr': {
             'class': 'logging.StreamHandler',
-            'level': 'WARNING',
+            'level': 'DEBUG',
             'formatter': 'time_level_msg',
             'stream': 'ext://sys.stderr',
         },

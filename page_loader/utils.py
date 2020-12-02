@@ -32,8 +32,9 @@ def write_to_file(content, path):
         write_mode = 'wb' if isinstance(content, bytes) else 'w'
         with open(path, write_mode) as file:
             file.write(content)
+        logger.info(f'Created file: {path}')
     except OSError as e:
-        logger.error("Failed to write to a file: " + str(e))
+        logger.error(f'Failed to write to a file: {str(e)}')
         raise
 
 
@@ -41,6 +42,7 @@ def create_dir(path):
     try:
         if not os.path.exists(path):
             os.mkdir(path)
+            logger.info(f'Created directory: {path}')
     except OSError as e:
-        logger.error("Failed to create a directory: " + str(e))
+        logger.error(f'Failed to create a directory: {str(e)}')
         raise
