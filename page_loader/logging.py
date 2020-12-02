@@ -8,5 +8,4 @@ logging.basicConfig(
     level=logging.INFO,
     stream=sys.stderr,
 )
-
-logger = logging.getLogger('root')
+logger = logging.getLogger(__name__)
