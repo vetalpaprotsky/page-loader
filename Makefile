@@ -5,7 +5,7 @@ package-install:
 	pip install --user dist/*.whl
 
 test:
-	poetry run pytest tests --cov=page_loader
+	poetry run pytest tests --cov=page_loader --log-cli-level=20
 
 lint:
 	poetry run flake8 page_loader
