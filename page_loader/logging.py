@@ -1,28 +1,12 @@
 import logging
 import logging.config
+import sys
 
-config = {
-    'version': 1,
-    'formatters': {
-        'time_level_msg': {
-            'format': '%(asctime)s - %(levelname)s - %(message)s',
-        },
-    },
-    'handlers': {
-        'stderr': {
-            'class': 'logging.StreamHandler',
-            'level': 'DEBUG',
-            'formatter': 'time_level_msg',
-            'stream': 'ext://sys.stderr',
-        },
-    },
-    'loggers': {
-        'root': {
-            'level': 'DEBUG',
-            'handlers': ['stderr'],
-        },
-    },
-}
+logging.basicConfig(
+    format=('%(asctime)s - %(levelname)s - '
+            '%(filename)s:%(lineno)d - %(message)s'),
+    level=logging.INFO,
+    stream=sys.stderr,
+)
 
-logging.config.dictConfig(config)
 logger = logging.getLogger('root')
