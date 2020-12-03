@@ -15,3 +15,6 @@
 
 ### Page Loader | Step 3
 [![asciicast](https://asciinema.org/a/HnkeswWD6uePW9ccgvniwQcaC.svg)](https://asciinema.org/a/HnkeswWD6uePW9ccgvniwQcaC)
+
+### Page Loader | Step 4
+[![asciicast](https://asciinema.org/a/7nzS43DMx3RUIiijqzL7WzLjl.svg)](https://asciinema.org/a/7nzS43DMx3RUIiijqzL7WzLjl)
