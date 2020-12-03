@@ -8,6 +8,6 @@ def get_resource_content(url, is_binary=True):
         response.raise_for_status()
         logger.info(f'Successfully got resource from: {url}')
         return response.content if is_binary else response.text
-    except requests.exceptions.HTTPError as e:
-        logger.error(f'Failed to get resource content: {str(e)}')
+    except requests.exceptions.HTTPError:
+        logger.error(f'Failed to get resource from: {url}')
         raise

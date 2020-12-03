@@ -27,14 +27,14 @@ def is_url_local_to_host(url, root_url):
     return hostname is None or hostname == urlparse(root_url).hostname
 
 
-def write_to_file(content, path):
+def create_file(content, path):
     try:
         write_mode = 'wb' if isinstance(content, bytes) else 'w'
         with open(path, write_mode) as file:
             file.write(content)
         logger.info(f'Created file: {path}')
-    except OSError as e:
-        logger.error(f'Failed to write to a file: {str(e)}')
+    except OSError:
+        logger.error(f'Failed to create a file: {path}')
         raise
 
 
@@ -43,6 +43,6 @@ def create_dir(path):
         if not os.path.exists(path):
             os.mkdir(path)
             logger.info(f'Created directory: {path}')
-    except OSError as e:
-        logger.error(f'Failed to create a directory: {str(e)}')
+    except OSError:
+        logger.error(f'Failed to create a directory: {path}')
         raise
