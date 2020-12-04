@@ -1,5 +1,5 @@
 import os
-from tests.utils import load_fixture, whitespaces_removed
+from tests.utils import load_fixture, is_content_identical
 from page_loader.download import download
 
 
@@ -12,9 +12,7 @@ def test_download_page_without_resources(requests_mock, tmpdir):
     assert download(page_url, str(tmpdir)) == page_path
 
     with open(page_path) as file:
-        page = whitespaces_removed(file.read())
-        expected = whitespaces_removed(page_html)
-        assert page == expected
+        assert is_content_identical(file.read(), page_html)
 
     resources_dir_path = tmpdir / 'this-is-a-test-page_files'
     assert not os.path.isdir(resources_dir_path)
@@ -65,10 +63,10 @@ def test_download_page_with_resources(requests_mock, tmpdir):
     assert download(page_url, str(tmpdir)) == page_path
 
     with open(page_path) as file:
-        # TODO: Come up with a better way to check whether pages are equal.
-        page = whitespaces_removed(file.read())
-        expected = whitespaces_removed(load_fixture('page_after_download.html'))
-        assert sorted(page) == sorted(expected)
+        assert is_content_identical(
+            file.read(),
+            load_fixture('page_after_download.html')
+        )
 
     resources = [
         ('ru-hexlet-io-courses.html', page_html),
