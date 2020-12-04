@@ -2,6 +2,7 @@ import os
 import re
 from urllib.parse import urlparse
 from page_loader.logging import logger
+from page_loader.exceptions import FileError, DirectoryError
 
 
 def url_to_name(url):
@@ -33,9 +34,9 @@ def create_file(content, path):
         with open(path, write_mode) as file:
             file.write(content)
         logger.info(f'Created file: {path}')
-    except OSError:
-        logger.error(f'Failed to create a file: {path}')
-        raise
+    except OSError as e:
+        logger.error(f'Failed to create file: {path}')
+        raise FileError(str(e))
 
 
 def create_dir(path):
@@ -43,6 +44,6 @@ def create_dir(path):
         if not os.path.exists(path):
             os.mkdir(path)
             logger.info(f'Created directory: {path}')
-    except OSError:
-        logger.error(f'Failed to create a directory: {path}')
-        raise
+    except OSError as e:
+        logger.error(f'Failed to create directory: {path}')
+        raise DirectoryError(str(e))

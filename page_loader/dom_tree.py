@@ -1,11 +1,11 @@
 import os
 from urllib.parse import urljoin
+from bs4 import BeautifulSoup
 from page_loader.utils import (
     url_to_file_name,
     is_url_local_to_host,
     get_root_url,
 )
-from bs4 import BeautifulSoup
 
 
 def set_local_resources(html, page_url, resources_dir_path):

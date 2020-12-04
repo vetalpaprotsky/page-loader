@@ -1,12 +1,12 @@
 import logging
 import sys
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger('page-loader')
 logger.setLevel(logging.DEBUG)
 _handler = logging.StreamHandler(sys.stderr)
-_handler.setLevel(logging.INFO)
+_handler.setLevel(logging.WARNING)
 _formatter = logging.Formatter(
-    '%(asctime)s - %(levelname)s - %(filename)s:%(lineno)d - %(message)s'
+    '%(asctime)s - %(levelname)s - %(name)s - %(message)s'
 )
 _handler.setFormatter(_formatter)
 logger.addHandler(_handler)
