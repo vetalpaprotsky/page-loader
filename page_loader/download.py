@@ -29,13 +29,13 @@ def download(page_url, output_dir_path):
         for info in resources_info:
             _download_resource(info['url'], info['download_to_path'])
 
-    page_path = os.path.join(
+    page_file_path = os.path.join(
         output_dir_path,
         url_to_file_name(page_url),
     )
-    create_file(updated_page_html, page_path)
+    create_file(updated_page_html, page_file_path)
 
-    return page_path
+    return page_file_path
 
 
 def _download_resource(url, download_to_path):

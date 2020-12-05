@@ -8,12 +8,12 @@ from page_loader.logging import logger
 def main():
     args = parse_args()
     try:
-        page_path = download(args['url'], args['output'])
+        page_file_path = download(args['url'], args['output'])
     except BaseError as e:
         logger.critical(str(e))
         sys.exit(1)
     else:
-        print(page_path)
+        print(page_file_path)
 
 
 if __name__ == '__main__':
