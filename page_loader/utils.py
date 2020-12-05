@@ -12,9 +12,13 @@ def url_to_name(url):
 
 
 def url_to_file_name(url, default_ext='.html'):
-    url_without_ext, ext = os.path.splitext(url)
+    url = url.rstrip('/')
+    _, ext = os.path.splitext(urlparse(url).path)
     if not ext:
+        url_without_ext = url
         ext = default_ext
+    else:
+        url_without_ext = url[0:-len(ext)]
     return url_to_name(url_without_ext) + ext
 
 
