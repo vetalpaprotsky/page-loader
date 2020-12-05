@@ -111,7 +111,7 @@ def test_download_unavailable_page(requests_mock, tmpdir):
         download(page_url, str(tmpdir))
 
 
-def test_download_when_resources_dir_cant_be_created(requests_mock):
+def test_download_with_non_existing_output_dir(requests_mock):
     page_html = '''
         <html>
             <body>
