@@ -54,9 +54,9 @@ def create_dir(path):
         raise DirectoryError()
 
 
-def get_content(url, is_binary=True):
+def get_content(url, is_binary=True, timeout=10):
     try:
-        response = requests.get(url)
+        response = requests.get(url, timeout=timeout)
         response.raise_for_status()
         logger.info(f'Got successful response from: {url}')
         return response.content if is_binary else response.text
