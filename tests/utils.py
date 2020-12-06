@@ -14,6 +14,5 @@ def whitespaces_removed(string):
 # FIXME: Not the best way to check whether two html pages have the same content.
 def is_content_identical(html1, html2):
     return (
-        sorted(whitespaces_removed(html1))
-        == sorted(whitespaces_removed(html2))
+        sorted(whitespaces_removed(html1)) == sorted(whitespaces_removed(html2))
     )
