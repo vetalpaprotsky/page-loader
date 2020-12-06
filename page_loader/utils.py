@@ -1,8 +1,9 @@
 import os
 import re
+import requests
 from urllib.parse import urlparse
 from page_loader.logging import logger
-from page_loader.exceptions import FileError, DirectoryError
+from page_loader.exceptions import FileError, DirectoryError, HTTPError
 
 
 def url_to_name(url):
@@ -39,8 +40,8 @@ def create_file(content, path):
             file.write(content)
         logger.info(f'Created file: {path}')
     except OSError as e:
-        logger.error(f'Failed to create file: {path}')
-        raise FileError(str(e))
+        logger.error(f'Failed to create file: {path} - {str(e)}')
+        raise FileError()
 
 
 def create_dir(path):
@@ -49,5 +50,16 @@ def create_dir(path):
             os.mkdir(path)
             logger.info(f'Created directory: {path}')
     except OSError as e:
-        logger.error(f'Failed to create directory: {path}')
-        raise DirectoryError(str(e))
+        logger.error(f'Failed to create directory: {path} - {str(e)}')
+        raise DirectoryError()
+
+
+def get_content(url, is_binary=True):
+    try:
+        response = requests.get(url)
+        response.raise_for_status()
+        logger.info(f'Got successful response from: {url}')
+        return response.content if is_binary else response.text
+    except requests.exceptions.RequestException as e:
+        logger.error(f'Got unsuccessful response from {url} - {str(e)}')
+        raise HTTPError()

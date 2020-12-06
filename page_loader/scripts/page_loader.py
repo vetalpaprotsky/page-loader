@@ -9,8 +9,8 @@ def main():
     args = parse_args()
     try:
         page_file_path = download(args['url'], args['output'])
-    except BaseError as e:
-        logger.critical(str(e))
+    except BaseError:
+        logger.critical('Download failed')
         sys.exit(1)
     else:
         print(page_file_path)

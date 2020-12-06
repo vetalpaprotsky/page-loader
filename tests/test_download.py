@@ -2,7 +2,7 @@ import pytest
 import os
 from tests.utils import load_fixture, is_content_identical
 from page_loader.download import download
-from page_loader.exceptions import HTTPError, DirectoryError
+from page_loader.exceptions import HTTPError, FileError
 
 
 def test_download_page_with_resources(requests_mock, tmpdir):
@@ -74,22 +74,22 @@ def test_download_page_with_some_unavailable_resources(requests_mock, tmpdir):
     page_html = '''
         <html>
             <body>
-                <img src="available.png">
                 <img src="unavailable.png">
+                <img src="available.png">
             <body>
         </html>
     '''
     page_url = 'http://test.com'
     requests_mock.get(page_url, text=page_html)
-    requests_mock.get(page_url + '/available.png', content=b'\xFF')
     requests_mock.get(page_url + '/unavailable.png', status_code=404)
+    requests_mock.get(page_url + '/available.png', content=b'\xFF')
 
     download(page_url, str(tmpdir))
 
     resources_dir_path = tmpdir / 'test-com_files'
     assert os.path.isfile(tmpdir / 'test-com.html')
-    assert os.path.isfile(resources_dir_path / 'test-com-available.png')
     assert not os.path.isfile(resources_dir_path / 'test-com-unavailable.png')
+    assert os.path.isfile(resources_dir_path / 'test-com-available.png')
 
 
 def test_download_page_without_resources(requests_mock, tmpdir):
@@ -112,16 +112,8 @@ def test_download_unavailable_page(requests_mock, tmpdir):
 
 
 def test_download_with_non_existing_output_dir(requests_mock):
-    page_html = '''
-        <html>
-            <body>
-                <script src="script.js"></script>
-            <body>
-        </html>
-    '''
     page_url = 'http://test.com'
-    requests_mock.get(page_url, text=page_html)
-    requests_mock.get(page_url + '/script.js', text='console.log("JS");')
+    requests_mock.get(page_url, text='<html></html>')
 
-    with pytest.raises(DirectoryError):
+    with pytest.raises(FileError):
         download(page_url, 'non/existing/dir/path')
