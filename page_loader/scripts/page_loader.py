@@ -1,6 +1,6 @@
 import sys
-from page_loader.download import download
-from page_loader.args_parser import parse_args
+from page_loader.downloading import download
+from page_loader.args_parsing import parse_args
 from page_loader.exceptions import BaseError
 from page_loader.logging import logger
 

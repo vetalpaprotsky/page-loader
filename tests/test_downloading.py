@@ -1,7 +1,7 @@
 import pytest
 import os
 from tests.utils import load_fixture, is_content_identical
-from page_loader.download import download
+from page_loader.downloading import download
 from page_loader.exceptions import HTTPError, FileError
 
 

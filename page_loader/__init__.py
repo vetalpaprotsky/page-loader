@@ -1,1 +1,1 @@
-from page_loader.download import download  # noqa: F401
+from page_loader.downloading import download  # noqa: F401
