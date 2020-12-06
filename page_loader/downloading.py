@@ -2,13 +2,9 @@ import os
 from page_loader.logging import logger
 from page_loader.exceptions import FileError, HTTPError
 from page_loader.dom_tree import set_local_resources
-from page_loader.utils import (
-    url_to_name,
-    url_to_file_name,
-    create_file,
-    create_dir,
-    get_content,
-)
+from page_loader.resources import get_content
+from page_loader.utils import create_file, create_dir
+from page_loader.urls import url_to_name, url_to_file_name
 
 
 def download(page_url, output_dir_path):

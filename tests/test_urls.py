@@ -1,5 +1,5 @@
 import pytest
-from page_loader.utils import url_to_file_name
+from page_loader.urls import url_to_file_name
 
 
 @pytest.mark.parametrize(

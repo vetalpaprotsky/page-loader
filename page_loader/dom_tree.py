@@ -1,7 +1,7 @@
 import os
 from urllib.parse import urljoin
 from bs4 import BeautifulSoup
-from page_loader.utils import (
+from page_loader.urls import (
     url_to_file_name,
     is_url_local_to_host,
     get_root_url,
