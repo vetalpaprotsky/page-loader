@@ -7,7 +7,7 @@
 ### Hexlet tests and linter status:
 [![Actions Status](https://github.com/vetalpaprotsky/python-project-lvl3/workflows/hexlet-check/badge.svg)](https://github.com/vetalpaprotsky/python-project-lvl3/actions)
 
-## Page Loader | Installation
+### Page Loader | Installation
 [![asciicast](https://asciinema.org/a/S59kn47BwVQmBXzicp8P0ZzsK.svg)](https://asciinema.org/a/S59kn47BwVQmBXzicp8P0ZzsK)
 
 ### Page Loader | Step 1
