@@ -2,7 +2,7 @@ import os
 from page_loader.logging import logger
 from page_loader.exceptions import FileError, HTTPError
 from page_loader.dom_tree import set_local_resources
-from page_loader.resources import get_content
+from page_loader.resources import get_content, get_content_by_streaming
 from page_loader.utils import create_file, create_dir
 from page_loader.urls import url_to_name, url_to_file_name
 
@@ -36,7 +36,7 @@ def download(page_url, output_dir_path):
 
 def _download_page_resource(url, download_to_path):
     try:
-        content = get_content(url)
+        content = get_content_by_streaming(url, show_progress=True)
         create_file(content, download_to_path)
     except (HTTPError, FileError):
         logger.warning(f"Page resource {url} wasn't downloaded")
