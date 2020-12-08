@@ -13,7 +13,7 @@ def main():
         logger.critical('Download failed')
         sys.exit(1)
     else:
-        print(page_file_path)
+        print(f'Page was downloaded as {page_file_path}')
 
 
 if __name__ == '__main__':
