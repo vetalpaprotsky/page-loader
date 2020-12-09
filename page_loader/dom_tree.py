@@ -25,7 +25,7 @@ def set_local_resources(html, page_url, resources_dir_path):
         _set_resource_url(tag, os.path.join(resources_dir_name, resource_name))
         resources_info.append({
             'url': full_resource_url,
-            'download_to_path': os.path.join(resources_dir_path, resource_name),
+            'download_path': os.path.join(resources_dir_path, resource_name),
         })
 
     return soup.prettify(formatter='html5'), resources_info
