@@ -10,6 +10,9 @@
 ### Page Loader | Installation
 [![asciicast](https://asciinema.org/a/S59kn47BwVQmBXzicp8P0ZzsK.svg)](https://asciinema.org/a/S59kn47BwVQmBXzicp8P0ZzsK)
 
+### Page Loader | Overview
+[![asciicast](https://asciinema.org/a/BlGEw2WrNghwSVooiVldNHTL7.svg)](https://asciinema.org/a/BlGEw2WrNghwSVooiVldNHTL7)
+
 ### Page Loader | Step 1
 [![asciicast](https://asciinema.org/a/pYeS3WUbPYiyH66cR848TkdzX.svg)](https://asciinema.org/a/pYeS3WUbPYiyH66cR848TkdzX)
 
