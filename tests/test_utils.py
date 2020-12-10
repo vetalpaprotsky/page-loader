@@ -12,7 +12,7 @@ from page_loader.utils import write_to_file, create_dir
 )
 def test_write_to_file(content, read_mode, tmpdir):
     file_path = tmpdir / 'file.txt'
-    write_to_file(content, tmpdir / 'file.txt')
+    write_to_file(content, file_path)
 
     with open(file_path, read_mode) as file:
         assert file.read() == content
