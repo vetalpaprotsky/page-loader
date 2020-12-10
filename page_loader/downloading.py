@@ -24,7 +24,7 @@ def download(page_url, output_dir_path):
     resources_count = len(resources_info)
     if resources_count > 0:
         create_dir(resources_dir_path)
-        progress_bar = Bar('Downloaded page resources', max=resources_count)
+        progress_bar = Bar('Downloading page resources', max=resources_count)
         for info in resources_info:
             _download_page_resource(info['url'], info['download_path'])
             progress_bar.next()
