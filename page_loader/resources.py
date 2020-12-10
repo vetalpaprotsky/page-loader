@@ -1,6 +1,5 @@
 import requests
 from page_loader.logging import logger
-from page_loader.exceptions import HTTPError
 
 
 def get_content(url, decode=False):
@@ -15,6 +14,6 @@ def get_content(url, decode=False):
 
         logger.info(f'Got successful response from {url}')
         return response.text if decode else response.content
-    except requests.exceptions.RequestException as e:
-        logger.error(f'Got unsuccessful response from {url} - {str(e)}')
-        raise HTTPError()
+    except requests.exceptions.RequestException:
+        logger.error(f'Got unsuccessful response from {url}')
+        raise

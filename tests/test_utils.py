@@ -1,6 +1,5 @@
 import pytest
 import os
-from page_loader.exceptions import FileError, DirectoryError
 from page_loader.utils import write_to_file, create_dir
 
 
@@ -20,7 +19,7 @@ def test_write_to_file(content, read_mode, tmpdir):
 
 
 def test_write_to_file_when_path_does_not_exist():
-    with pytest.raises(FileError):
+    with pytest.raises(OSError):
         write_to_file('content', 'non/existing/dir/path/file.txt')
 
 
@@ -32,5 +31,5 @@ def test_create_dir(tmpdir):
 
 
 def test_create_dir_when_path_does_not_exist():
-    with pytest.raises(DirectoryError):
+    with pytest.raises(OSError):
         create_dir('non/existing/dir/path')

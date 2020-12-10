@@ -1,6 +1,6 @@
 import pytest
 from page_loader.resources import get_content
-from page_loader.exceptions import HTTPError
+from requests.exceptions import RequestException
 
 
 @pytest.mark.parametrize(
@@ -17,9 +17,10 @@ def test_get_content(content, decode, expected, requests_mock):
     assert get_content(url, decode=decode) == expected
 
 
-def test_get_content_when_resource_is_unavailable(requests_mock):
+@pytest.mark.parametrize('status_code', [404, 500])
+def test_get_content_when_resource_is_unavailable(status_code, requests_mock):
     url = 'http://test.com'
-    requests_mock.get(url, status_code=500)
+    requests_mock.get(url, status_code=status_code)
 
-    with pytest.raises(HTTPError):
+    with pytest.raises(RequestException):
         get_content(url)
