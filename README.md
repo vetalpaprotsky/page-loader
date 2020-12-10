@@ -29,4 +29,4 @@
 [![asciicast](https://asciinema.org/a/18zp0wGoyJDUYAO80UkCEgyVx.svg)](https://asciinema.org/a/18zp0wGoyJDUYAO80UkCEgyVx)
 
 ### Page Loader | Step 6
-[![asciicast](https://asciinema.org/a/hwoipPy6XLtwzsM14wFt5yf3b.svg)](https://asciinema.org/a/hwoipPy6XLtwzsM14wFt5yf3b)
+[![asciicast](https://asciinema.org/a/yrurmQUE6mSO5V0rUPMtZCIxy.svg)](https://asciinema.org/a/yrurmQUE6mSO5V0rUPMtZCIxy)
