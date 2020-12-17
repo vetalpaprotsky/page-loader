@@ -1,5 +1,5 @@
 import requests
-from page_loader.logging import logger
+import logging
 
 
 def get_content(url, decode=False):
@@ -12,8 +12,8 @@ def get_content(url, decode=False):
         if response.encoding is None:
             response.encoding = 'utf-8'
 
-        logger.info(f'Got successful response from {url}')
+        logging.info(f'Got successful response from {url}')
         return response.text if decode else response.content
     except requests.exceptions.RequestException:
-        logger.error(f'Got unsuccessful response from {url}')
+        logging.error(f'Got unsuccessful response from {url}')
         raise

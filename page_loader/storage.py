@@ -1,5 +1,5 @@
 import os
-from page_loader.logging import logger
+import logging
 
 
 def write_to_file(content, path):
@@ -7,9 +7,9 @@ def write_to_file(content, path):
         write_mode = 'wb' if isinstance(content, bytes) else 'w'
         with open(path, write_mode) as file:
             file.write(content)
-        logger.info(f'Wrote to file {path}')
+        logging.info(f'Wrote to file {path}')
     except OSError:
-        logger.error(f'Failed to write to file {path}')
+        logging.error(f'Failed to write to file {path}')
         raise
 
 
@@ -17,7 +17,7 @@ def create_dir(path):
     try:
         if not os.path.exists(path):
             os.mkdir(path)
-            logger.info(f'Created directory {path}')
+            logging.info(f'Created directory {path}')
     except OSError:
-        logger.error(f'Failed to create directory {path}')
+        logging.error(f'Failed to create directory {path}')
         raise

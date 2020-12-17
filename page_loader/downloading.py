@@ -1,7 +1,7 @@
 import os
+import logging
 from requests.exceptions import RequestException
 from progress.bar import Bar
-from page_loader.logging import logger
 from page_loader.dom_tree import set_local_resources
 from page_loader.resources import get_content
 from page_loader.storage import write_to_file, create_dir
@@ -38,4 +38,4 @@ def _download_page_resource(url, download_path):
         content = get_content(url)
         write_to_file(content, download_path)
     except (OSError, RequestException) as e:
-        logger.warning(f"Page resource {url} wasn't downloaded - {str(e)}")
+        logging.warning(f"Page resource {url} wasn't downloaded - {str(e)}")
