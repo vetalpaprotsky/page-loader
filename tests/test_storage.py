@@ -1,6 +1,6 @@
 import pytest
 import os
-from page_loader.utils import write_to_file, create_dir
+from page_loader.storage import write_to_file, create_dir
 
 
 @pytest.mark.parametrize(

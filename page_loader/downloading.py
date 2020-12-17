@@ -4,7 +4,7 @@ from progress.bar import Bar
 from page_loader.logging import logger
 from page_loader.dom_tree import set_local_resources
 from page_loader.resources import get_content
-from page_loader.utils import write_to_file, create_dir
+from page_loader.storage import write_to_file, create_dir
 from page_loader.urls import url_to_name, url_to_file_name
 
 
