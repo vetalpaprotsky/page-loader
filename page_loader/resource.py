@@ -2,7 +2,7 @@ import requests
 import logging
 
 
-def get_content(url, decode=False):
+def get(url, decode=False):
     REQUEST_TIMEOUT = 10
 
     try:
