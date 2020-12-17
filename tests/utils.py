@@ -2,8 +2,10 @@ import re
 import os
 
 
-def load_fixture(path):
-    with open(os.path.join(os.getcwd(), 'tests', 'fixtures', path)) as file:
+def load_fixture(path, binary=False):
+    read_mode = 'rb' if binary else 'r'
+    full_path = os.path.join(os.getcwd(), 'tests', 'fixtures', path)
+    with open(full_path, read_mode) as file:
         return file.read()
 
 

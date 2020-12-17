@@ -7,10 +7,10 @@ from requests.exceptions import RequestException
 
 def test_download_page_with_resources(requests_mock, tmpdir):
     page_html = load_fixture('page.html')
-    application_css_content = 'h3 { color: red; }'
-    application_js_content = 'alert("Hexlet");'
-    runtime_js_content = 'alert("JS");'
-    python_png_binary = b'\xAB\xBC\xCD\xDE\xEF'
+    application_css_content = load_fixture('page_resources/application.css')
+    application_js_content = load_fixture('page_resources/application.js')
+    runtime_js_content = load_fixture('page_resources/runtime.js')
+    python_png_binary = load_fixture('page_resources/python.png', binary=True)
     page_url = 'https://ru.hexlet.io/courses'
 
     mocks = [
