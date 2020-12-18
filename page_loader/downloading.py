@@ -4,7 +4,7 @@ from progress.bar import Bar
 from requests.exceptions import RequestException
 from page_loader import resource
 from page_loader.dom_tree import set_local_resources
-from page_loader.storage import write_to_file, create_dir
+from page_loader.storage import create_file, create_dir
 from page_loader.urls import url_to_name, url_to_file_name
 
 
@@ -19,7 +19,7 @@ def download(page_url, output_dir_path):
     )
 
     page_file_path = os.path.join(output_dir_path, url_to_file_name(page_url))
-    write_to_file(updated_page_html, page_file_path)
+    create_file(updated_page_html, page_file_path)
 
     resources_count = len(resources_info)
     if resources_count > 0:
@@ -36,6 +36,6 @@ def download(page_url, output_dir_path):
 def _download_page_resource(url, download_path):
     try:
         content = resource.get(url)
-        write_to_file(content, download_path)
+        create_file(content, download_path)
     except (RequestException, OSError) as e:
         logging.warning(f"Page resource {url} wasn't downloaded - {str(e)}")

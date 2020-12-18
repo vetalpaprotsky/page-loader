@@ -1,6 +1,6 @@
 import pytest
 import os
-from page_loader.storage import write_to_file, create_dir
+from page_loader.storage import create_file, create_dir
 
 
 @pytest.mark.parametrize(
@@ -10,17 +10,17 @@ from page_loader.storage import write_to_file, create_dir
         (b'\xFF', 'rb'),
     ]
 )
-def test_write_to_file(content, read_mode, tmpdir):
+def test_create_file(content, read_mode, tmpdir):
     file_path = tmpdir / 'file.txt'
-    write_to_file(content, file_path)
+    create_file(content, file_path)
 
     with open(file_path, read_mode) as file:
         assert file.read() == content
 
 
-def test_write_to_file_when_path_does_not_exist():
+def test_create_file_when_path_does_not_exist():
     with pytest.raises(OSError):
-        write_to_file('content', 'non/existing/dir/path/file.txt')
+        create_file('content', 'non/existing/dir/path/file.txt')
 
 
 def test_create_dir(tmpdir):
