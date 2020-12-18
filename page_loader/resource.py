@@ -1,5 +1,6 @@
 import requests
 import logging
+from page_loader.exceptions import PageLoadingError
 
 
 def get(url, decode=False):
@@ -14,6 +15,5 @@ def get(url, decode=False):
 
         logging.info(f'Got successful response from {url}')
         return response.text if decode else response.content
-    except requests.exceptions.RequestException:
-        logging.error(f'Got unsuccessful response from {url}')
-        raise
+    except requests.exceptions.RequestException as e:
+        raise PageLoadingError('Got unsuccessful response from {url}') from e

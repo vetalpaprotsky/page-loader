@@ -2,7 +2,7 @@ import pytest
 import os
 from tests.utils import load_fixture, is_content_identical
 from page_loader.downloading import download
-from requests.exceptions import RequestException
+from page_loader.exceptions import PageLoadingError
 
 
 def test_download_page_with_resources(requests_mock, tmpdir):
@@ -107,7 +107,7 @@ def test_download_unavailable_page(requests_mock, tmpdir):
     page_url = 'http://test.com'
     requests_mock.get(page_url, status_code=404)
 
-    with pytest.raises(RequestException):
+    with pytest.raises(PageLoadingError):
         download(page_url, str(tmpdir))
 
 
@@ -115,5 +115,5 @@ def test_download_with_non_existing_output_dir(requests_mock):
     page_url = 'http://test.com'
     requests_mock.get(page_url, text='<html></html>')
 
-    with pytest.raises(OSError):
+    with pytest.raises(PageLoadingError):
         download(page_url, 'non/existing/dir/path')
