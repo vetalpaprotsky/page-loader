@@ -1,6 +1,6 @@
 import os
 import logging
-from page_loader.exceptions import PageLoadingError
+from page_loader.exceptions import StorageError
 
 
 def write_to_file(content, path):
@@ -10,7 +10,7 @@ def write_to_file(content, path):
             file.write(content)
         logging.info(f'Wrote to file {path}')
     except OSError as e:
-        raise PageLoadingError(f'Failed to write to file {path}') from e
+        raise StorageError(f'Failed to write to file {path}') from e
 
 
 def create_dir(path):
@@ -19,4 +19,4 @@ def create_dir(path):
             os.mkdir(path)
             logging.info(f'Created directory {path}')
     except OSError as e:
-        raise PageLoadingError(f'Failed to create directory {path}') from e
+        raise StorageError(f'Failed to create directory {path}') from e
