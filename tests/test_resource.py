@@ -1,6 +1,6 @@
 import pytest
 from page_loader import resource
-from page_loader.exceptions import NetworkError
+from requests.exceptions import RequestException
 
 
 @pytest.mark.parametrize(
@@ -22,5 +22,5 @@ def test_get_when_resource_is_unavailable(status_code, requests_mock):
     url = 'http://test.com'
     requests_mock.get(url, status_code=status_code)
 
-    with pytest.raises(NetworkError):
+    with pytest.raises(RequestException):
         resource.get(url)

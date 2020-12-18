@@ -1,7 +1,6 @@
 import pytest
 import os
 from page_loader.storage import write_to_file, create_dir
-from page_loader.exceptions import StorageError
 
 
 @pytest.mark.parametrize(
@@ -20,7 +19,7 @@ def test_write_to_file(content, read_mode, tmpdir):
 
 
 def test_write_to_file_when_path_does_not_exist():
-    with pytest.raises(StorageError):
+    with pytest.raises(OSError):
         write_to_file('content', 'non/existing/dir/path/file.txt')
 
 
@@ -32,5 +31,5 @@ def test_create_dir(tmpdir):
 
 
 def test_create_dir_when_path_does_not_exist():
-    with pytest.raises(StorageError):
+    with pytest.raises(OSError):
         create_dir('non/existing/dir/path')
