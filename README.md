@@ -10,7 +10,7 @@ Page Loader can be installed using pip. The package is published on [TestPyPI](h
 ```
 pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple/ vetalpaprotsky-page-loader
 ```
-`
+
 To verify that the installation was successful, run `page-loader -h` command in the terminal. If you're not getting any errors, then everything went well.
 
 Here's how the installation process looks like:
