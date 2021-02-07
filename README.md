@@ -4,9 +4,6 @@
 [![Test Coverage](https://api.codeclimate.com/v1/badges/10bdd00c9dc4caf7ffcf/test_coverage)](https://codeclimate.com/github/vetalpaprotsky/page-loader/test_coverage)
 [![Python CI](https://github.com/vetalpaprotsky/page-loader/workflows/Python%20CI/badge.svg)](https://github.com/vetalpaprotsky/page-loader/actions)
 
-### Hexlet tests and linter status:
-[![Actions Status](https://github.com/vetalpaprotsky/page-loader/workflows/hexlet-check/badge.svg)](https://github.com/vetalpaprotsky/page-loader/actions)
-
 ### Page Loader | Installation
 [![asciicast](https://asciinema.org/a/S59kn47BwVQmBXzicp8P0ZzsK.svg)](https://asciinema.org/a/S59kn47BwVQmBXzicp8P0ZzsK)
 
