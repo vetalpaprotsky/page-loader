@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "vetalpaprotsky_page_loader"
-version = "0.6.8"
+version = "0.6.9"
 description = "Download web pages with all resources(js/css/images)."
 license = "MIT"
 readme = "README.md"
