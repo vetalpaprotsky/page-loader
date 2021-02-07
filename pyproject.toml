@@ -1,10 +1,13 @@
 [tool.poetry]
-name = "hexlet_code"
+name = "vetalpaprotsky_page_loader"
 version = "0.6.5"
 description = ""
 authors = ["Vitalii Paprotskyi <vetalpaprotsky@gmail.com>"]
 packages = [
   { include = "page_loader" },
+]
+classifiers = [
+  "Environment :: Console"
 ]
 
 [tool.poetry.dependencies]
