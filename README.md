@@ -4,8 +4,8 @@
 [![Test Coverage](https://api.codeclimate.com/v1/badges/10bdd00c9dc4caf7ffcf/test_coverage)](https://codeclimate.com/github/vetalpaprotsky/page-loader/test_coverage)
 [![Python CI](https://github.com/vetalpaprotsky/page-loader/workflows/Python%20CI/badge.svg)](https://github.com/vetalpaprotsky/page-loader/actions)
 
-### Page Loader | Installation
+### Installation
 [![asciicast](https://asciinema.org/a/zccplq7eg2dRrAVDvCc62zHey.svg)](https://asciinema.org/a/zccplq7eg2dRrAVDvCc62zHey)
 
-### Page Loader | Overview
+### Overview
 [![asciicast](https://asciinema.org/a/BlGEw2WrNghwSVooiVldNHTL7.svg)](https://asciinema.org/a/BlGEw2WrNghwSVooiVldNHTL7)
