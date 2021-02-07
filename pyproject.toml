@@ -10,7 +10,7 @@ packages = [
   { include = "page_loader" },
 ]
 classifiers = [
-  "Environment :: Console"
+  "Environment :: Console",
   "Topic :: Utilities"
 ]
 
