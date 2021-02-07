@@ -11,6 +11,7 @@ packages = [
 ]
 classifiers = [
   "Environment :: Console"
+  "Topic :: Utilities"
 ]
 
 [tool.poetry.dependencies]
